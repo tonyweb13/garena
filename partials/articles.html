@@ -1,0 +1,49 @@
+<div class="breadcrumbs" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Home</a>
+        </li>
+        <li class="active">Articles</li>
+        <span style="float: right;">
+            <a ng-show="authenticated == false || login == ''" href="#/login" >Login</a>
+            <a ng-show="authenticated == true" ng-click="logout();">Logout</a>
+        </span>
+    </ul>
+
+</div>
+<div class="page-content">
+    <div class="row">
+        <div class="col-md-12">
+
+            <nav class= "navbar" role= "navigation" ng-show="authenticated == true">
+                <div class= "navbar-header" >
+                    <a class="btn btn-lg btn-success" href="#/edit/0"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add New Article</a>
+                </div>
+            </nav>
+            <table class="table table-striped table-bordered" ng-show="articles.length > 0" style="margin-top:50px;" ng-repeat="data in articles">
+                <tbody>
+                <tr >
+                    <td><h2>{{data.title}}</h2></td>
+                </tr>
+                <tr>
+                    <td><b>Posted by user {{data.author}}</b></td>
+                </tr>
+                <tr>
+                    <td>{{data.content}}</td>
+               </tr>
+                <tr>
+                    <td ng-show="authenticated == true" ><a href="#/edit/{{data.id}}" class="btn"><i class="glyphicon glyphicon-edit"></i>Edit Article</a></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col-md-12" ng-show="articles.length == 0">
+            <div class="col-md-12">
+                <h4>No Article Found</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.page-content -->
